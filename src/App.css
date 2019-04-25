@@ -31,3 +31,29 @@
     transform: rotate(360deg);
   }
 }
+
+.searchinput{
+  width:35%!important ;
+  display: unset!important ;
+}
+.playersearchinput{
+  width:75% !important;
+  display: unset!important;
+}
+.searchbtn{
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+.card-img{
+    width: unset!important;
+    height: 120px;
+    border-radius: 50%!important;
+  
+}
