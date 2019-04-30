@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 
 // localdependencies
 import Navbar from "./Navbar";
@@ -10,11 +10,7 @@ import Search from './search';
 
 
 export default class Main extends React.Component{
-    sendparamstopopular=({match})=>{
-        return(
-            <Popular match={match}/>
-        )
-    }
+   
     render(){
         return(
             <div>
