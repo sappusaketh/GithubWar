@@ -7,6 +7,7 @@ import Home from "./HomeComponent";
 import Battle from './War/Battle';
 import Popular from './Popular/popular';
 import Search from './Search/search';
+import PieChart from './PieChart/PieChart'
 
 
 export default class Main extends React.Component{
@@ -20,6 +21,7 @@ export default class Main extends React.Component{
                 <Route path="/battle" exact component={Battle}/>
                 <Route path="/popular" component={Popular}/>
                 <Route path="/search" component={Search}/>
+                <Route path="/pie" component={PieChart}/>
                 <Redirect to ="/home"/>
             </Switch>
             </div>

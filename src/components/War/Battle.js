@@ -107,14 +107,14 @@ export default class Battle extends React.Component{
                 
                 <div className="row">
                     <div className="col-md-5">
-                        {player1}
+                        {player1} 
                     </div>
                     <div className=" battlebtn col-md-2">
                         {this.state.player1Info && this.state.player2Info? //if player1 and player2 are submitted
                         winner && looser? // if battle started
                         <button className=" btn btn-primary" id="resetall"  onClick={this.resetPlayer}>Reset All</button>
                         :<button className=" btn btn-primary" onClick={this.handleBattle}>battle</button>
-                        :""}
+                        :<h1>V/S</h1>}
                     </div>
                     <div className="col-md-5">
                         {player2}

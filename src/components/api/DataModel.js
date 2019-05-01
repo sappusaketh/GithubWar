@@ -1,21 +1,28 @@
 import Axios from 'axios';
 
-
-
-
-let latest='order=asc&sort=updated';
+const id = '4f222f0a729e56486a58';
+const sec = 'bcf861b19997f600bfe6c35342a4f40fa716c2d9';
+const params = `?client_id=${id}&client_secret=${sec}`;
+const latest='order=asc&sort=updated';
 
 export function getUser(userName){
-   return Axios.get(`https://api.github.com/users/${userName}`)
+   return Axios.get(`https://api.github.com/users/${userName}${params}`)
         .then(results => results.data)
         .catch( (error) => {console.log(error);});
 }
 
 
 export function getRepos(userName){
-   return Axios.get(`https://api.github.com/users/${userName}/repos?${latest}`)
+   return Axios.get(`https://api.github.com/users/${userName}/repos${params}&${latest}`)
         .then(results=> results.data)
         .catch( (error) => {console.log(error);});
+}
+
+function getLang(repo){
+        let url=repo+params
+        return Axios.get(url)
+        .then((results)=>{return results.data} )
+        .catch((err)=>console.log(err.message))
 }
 
 export function getUserProfile(userName){
@@ -54,28 +61,34 @@ export function getPopularRepos(language){
 }
 
 export function getUserLanguage(userName){
-        getRepos(userName).then((data)=>{
-                getLanguagesbyrepo(data)
+        return getRepos(userName).then((data)=>{
+                return getLanguagesbyrepo(data)
+                  .then(data=>dataConversion(data))
         })
         
                 
 }
 
-export async function getLanguagesbyrepo(languages){
-        
+export async function getLanguagesbyrepo( languages ){
+        // console.log(languages)
         let promise= new Promise(function(resolve,reject){
                 let language=[];
                 languages.forEach((lang,i)=>{
-                        Axios.get(lang.languages_url)
-                          .then((res)=>{
-                                language.push(res.data)
-                                if(i===languages.length-1){
-                                        resolve(language)
+                        // console.log(lang.languages_url)
+                        getLang(lang.languages_url)
+                        .then((data)=>{
+                                language.push(data)
+                                if(language.length===languages.length){
+                                        console.log(language)
+                                   return resolve (language)
                                 }
-                          })
+                        })
+                        
                 })
+                
         })
         let result=await promise
+        console.log()
         return getLangaugePercentage(result)
 }
 
@@ -100,16 +113,36 @@ function getLangaugePercentage(langs){
         })
         let total=arraySum(Object.values(finalLangobj))
         for(let key in finalLangobj){
-                finalLangobj[key]=(finalLangobj[key]/total)*100;
+                // if(Math.round((finalLangobj[key]/ total)*100)!==0){
+                        finalLangobj[key]=Math.round((finalLangobj[key]/ total)*100);
+                // }
         }
-        console.log(finalLangobj)
+                // console.log(finalLangobj)
         return finalLangobj;
+      
         // console.log(c)
 }
+
 function arraySum(array){
         return array.reduce((acc,curr)=>{
                 return acc+curr
         },0)
 }
-// getUserLanguage('sappusaketh')
+
+
+ function dataConversion(finalRepoObj){
+        let data_array=[]
+        for (let key in finalRepoObj){
+                if(finalRepoObj[key]!==0){
+               let newObj={
+                "id": key,
+                "label": key,
+                "value": finalRepoObj[key],
+               } 
+               data_array.push(newObj)
+        }
+        }
+        return data_array;
+}
+// getUserLanguage('sappusaketh').then(data=>console.log(data))
 // githubWar(['sappusaketh','sa']).then(data=>console.log(data))

@@ -159,3 +159,12 @@ ul.repoview{
 .nav-link.active{
 font-weight: bold;
 }
+
+.VictoryContainer svg{
+  height: unset!important;
+  width: unset!important;
+}
+.Langview h1{
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
