@@ -3,7 +3,7 @@ import React from 'react';
 // componentImport
 
 import UserProfileCard from './UserProfile';
-import {getUser,getRepos} from './DataModel';
+import {getUser,getRepos} from '../api/DataModel';
 import UserRepos from './UserRepos';
 
 export default class Search extends React.Component{

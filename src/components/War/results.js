@@ -8,6 +8,7 @@ export default function Results(props){
     return(
         <>
         <h1> {props.id}</h1>
+        {warStart? <h2>Score: {props.score}</h2>:""}
             <Card className="battle">
             <CardImg className="battlepic" src={user.avatar_url}  alt={user.login}/>
             <CardTitle><h4>@{user.login}</h4></CardTitle>

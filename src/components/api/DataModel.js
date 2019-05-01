@@ -17,13 +17,13 @@ export function getRepos(userName){
 }
 
 export function getUserProfile(userName){
-        return Axios.all([getUser(userName),getRepos(userName)])
-                .then((data)=>{
-                        let user= data[0];
-                        let repos= data[1];
-                        return(calculateUserScore(user,repos))
-                }
-        )
+   return Axios.all([getUser(userName),getRepos(userName)])
+        .then((data)=>{
+                let user= data[0];
+                let repos= data[1];
+                return(calculateUserScore(user,repos))
+        }
+)
 }
 
 function calculateUserScore(user,repos){
@@ -43,4 +43,11 @@ export function githubWar(players){
         )
 }
 
+export function getPopularRepos(language){
+        let url=`https://api.github.com/search/repositories?q=stars:>1+language:${language}
+        &sort=stars&order=desc&type=Repositories`
+        return Axios.get(url)
+           .then((results)=>{return results.data.items} )
+           .catch((err)=>console.log(err.message))
+}
 // githubWar(['sappusaketh','sa']).then(data=>console.log(data))

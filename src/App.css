@@ -61,7 +61,8 @@
 
 .card-img.battlepic{
   width:50%;
-  height: 150px;
+  padding-top: 2%;
+  /* height: 150px; */
   margin:auto;
   border-radius: 50%!important; 
 
@@ -119,4 +120,38 @@
 
 .battlebtn{
   margin:auto;
+}
+ul{
+  list-style: none;
+}
+
+li.language{
+  font-weight: 700 !important;
+  cursor: pointer !important;
+}
+
+
+li.language.active{
+  color:#007BFF;
+}
+
+.repoImg{
+  height:150px;
+  border-radius: 50%!important;
+}
+
+ul.repoview{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.repoview li{
+  padding: 20px;
+}
+.loading{
+  margin-top: 10%;
+}
+.nav-link.active{
+font-weight: bold;
 }

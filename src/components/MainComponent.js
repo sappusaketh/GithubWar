@@ -2,11 +2,11 @@ import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 
 // localdependencies
-import Navbar from "./Navbar";
+import Navbar from "./Common/Navbar";
 import Home from "./HomeComponent";
-import Battle from './Battle';
-import Popular from './popular';
-import Search from './search';
+import Battle from './War/Battle';
+import Popular from './Popular/popular';
+import Search from './Search/search';
 
 
 export default class Main extends React.Component{

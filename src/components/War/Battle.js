@@ -1,6 +1,6 @@
 import React from "react";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import {getUser, githubWar} from './DataModel';
+import Loading from '../Common/Loading';
+import {getUser, githubWar} from '../api/DataModel';
 import Results from './results';
 import PlayerInput from './PlayerInput';
 
@@ -66,12 +66,12 @@ export default class Battle extends React.Component{
                 })
             }.bind(this), 2000)
         
-                githubWar([this.state.player1Name,this.state.player2Name]).then((data)=>{
-                    this.setState({
-                        winner:data[0],
-                        looser:data[1]
-                    })
+            githubWar([this.state.player1Name,this.state.player2Name]).then((data)=>{
+                this.setState({
+                    winner:data[0],
+                    looser:data[1]
                 })
+            })
         }
         
     }
@@ -85,7 +85,7 @@ export default class Battle extends React.Component{
             player1=<PlayerInput id="player1" handleChange={this.handleChange} handleSubmit={this.handleSubmit} />       
         }else{
             player1=this.state.player1Info? winner && looser ?
-            <Results warStart={true} userdata={winner.userdata} id="winner"/>:
+            <Results warStart={true} score={winner.score} userdata={winner.userdata} id="winner"/>:
             <Results  warStart={false} id="player1" resetPlayer={this.resetPlayer} 
             userdata={this.state.player1Info}/>
             : (alert('Cannot find user: '+this.state.player1Name),
@@ -95,7 +95,7 @@ export default class Battle extends React.Component{
             player2= <PlayerInput id="player2" handleChange={this.handleChange} handleSubmit={this.handleSubmit} />    
         }else{
             player2=this.state.player2Info ? winner && looser ?
-            <Results warStart={true} userdata={looser.userdata} id="looser"/>:
+            <Results warStart={true} score={looser.score}userdata={looser.userdata} id="looser"/>:
             <Results warStart={false} id="player2" resetPlayer={this.resetPlayer} 
             userdata={this.state.player2Info}/>
             :(alert('Cannot find user: '+this.state.player2Name),
@@ -125,8 +125,7 @@ export default class Battle extends React.Component{
         )
     }else{
             return(
-            <div><CircularProgress/><br/>Loading...</div>
-
+            <Loading/>
             )
         }
     }
