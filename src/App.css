@@ -148,6 +148,10 @@ ul.repoview{
 }
 .repoview li{
   padding: 20px;
+  margin-bottom: 1%;
+}
+.repoview p{
+  margin-bottom: 0%;
 }
 .loading{
   margin-top: 10%;

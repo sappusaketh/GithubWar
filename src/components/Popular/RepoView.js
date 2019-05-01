@@ -14,7 +14,8 @@ export default function RepoView(props){
                         </div>
                         <div>
                             <img className="repoImg" src={repo.owner.avatar_url} alt={repo.owner.login}/>
-                            <p>{repo.name}</p>
+                            <a href={repo.html_url} target='_blank' rel="noopener noreferrer"><p>{repo.name}</p></a>
+                            <p>@{repo.owner.login}</p>
                             <p>{repo.stargazers_count} stars</p>
                         </div>
                     </li>

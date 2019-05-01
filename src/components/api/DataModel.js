@@ -1,6 +1,8 @@
 import Axios from 'axios';
 
 
+
+
 let latest='order=asc&sort=updated';
 
 export function getUser(userName){
@@ -50,4 +52,64 @@ export function getPopularRepos(language){
            .then((results)=>{return results.data.items} )
            .catch((err)=>console.log(err.message))
 }
+
+export function getUserLanguage(userName){
+        getRepos(userName).then((data)=>{
+                getLanguagesbyrepo(data)
+        })
+        
+                
+}
+
+export async function getLanguagesbyrepo(languages){
+        
+        let promise= new Promise(function(resolve,reject){
+                let language=[];
+                languages.forEach((lang,i)=>{
+                        Axios.get(lang.languages_url)
+                          .then((res)=>{
+                                language.push(res.data)
+                                if(i===languages.length-1){
+                                        resolve(language)
+                                }
+                          })
+                })
+        })
+        let result=await promise
+        return getLangaugePercentage(result)
+}
+
+function getLangaugePercentage(langs){
+        let languages=[];
+        languages=langs;
+        // console.log(languages)
+        let finalLangobj= {};
+       
+       languages.forEach((lang)=>{
+                for(let key in lang){
+                        let keys = Object.keys(finalLangobj)
+                        let result=keys.indexOf(key)
+                        if(result!==-1){
+                                finalLangobj[key]=finalLangobj[key]+lang[key]      
+                        }else{
+                                finalLangobj[key]=lang[key]
+                        }
+                }
+        // console.log(finalLangobj)
+                
+        })
+        let total=arraySum(Object.values(finalLangobj))
+        for(let key in finalLangobj){
+                finalLangobj[key]=(finalLangobj[key]/total)*100;
+        }
+        console.log(finalLangobj)
+        return finalLangobj;
+        // console.log(c)
+}
+function arraySum(array){
+        return array.reduce((acc,curr)=>{
+                return acc+curr
+        },0)
+}
+// getUserLanguage('sappusaketh')
 // githubWar(['sappusaketh','sa']).then(data=>console.log(data))
