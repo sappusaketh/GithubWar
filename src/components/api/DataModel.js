@@ -71,6 +71,7 @@ export function getUserLanguage(userName){
 
 export async function getLanguagesbyrepo( languages ){
         // console.log(languages)
+        if(languages){
         let promise= new Promise(function(resolve,reject){
                 let language=[];
                 languages.forEach((lang,i)=>{
@@ -79,7 +80,7 @@ export async function getLanguagesbyrepo( languages ){
                         .then((data)=>{
                                 language.push(data)
                                 if(language.length===languages.length){
-                                        console.log(language)
+                                        // console.log(language)
                                    return resolve (language)
                                 }
                         })
@@ -88,8 +89,11 @@ export async function getLanguagesbyrepo( languages ){
                 
         })
         let result=await promise
-        console.log()
+        // console.log()
         return getLangaugePercentage(result)
+        } else{
+                return null;
+        }              
 }
 
 function getLangaugePercentage(langs){
@@ -114,7 +118,7 @@ function getLangaugePercentage(langs){
         let total=arraySum(Object.values(finalLangobj))
         for(let key in finalLangobj){
                 // if(Math.round((finalLangobj[key]/ total)*100)!==0){
-                        finalLangobj[key]=Math.round((finalLangobj[key]/ total)*100);
+                finalLangobj[key]=Math.round((finalLangobj[key]/ total)*100);
                 // }
         }
                 // console.log(finalLangobj)
@@ -144,5 +148,3 @@ function arraySum(array){
         }
         return data_array;
 }
-// getUserLanguage('sappusaketh').then(data=>console.log(data))
-// githubWar(['sappusaketh','sa']).then(data=>console.log(data))

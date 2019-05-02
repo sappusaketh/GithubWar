@@ -168,3 +168,7 @@ font-weight: bold;
   margin-top: 2%;
   margin-bottom: 1%;
 }
+
+.conatiner .card{
+  max-width:unset!important;
+}

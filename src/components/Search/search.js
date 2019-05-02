@@ -31,35 +31,47 @@ export default class Search extends React.Component{
     
       handleSubmit(event) {
         event.preventDefault();
-
-        this.setState({
-        isLoading:!this.state.isLoading,
-      })
+        
         // console.log("submitted value : "+this.state.user)
-        getUserLanguage(this.state.user).then((data)=>{
-          this.setState({
-            langData:data,
-          })
-        })
-        
         getUser(this.state.user).then((data)=>{
-          this.setState({
+          if(data){
+            this.setState({
+            isLoading:!this.state.isLoading,
             userInfo:data
-          })
+            })
+          }else{
+            alert(`User doesnot exist with user name${this.state.user}`)
+          }
+          
         })
 
-        getRepos(this.state.user).then((data)=>{
-          this.setState({
-            repos:data,
-            user:null
+      
+          getUserLanguage(this.state.user).then((data)=>{
+            if(data.length!==0){
+            this.setState({
+              langData:data,
+            })
+          }
           })
-        })
+
+          getRepos(this.state.user).then((data)=>{
+            if(data){
+              this.setState({
+                repos:data
+              })
+              setTimeout(() => {
+                this.setState({
+                  isLoading:!this.state.isLoading
+                })
+              }, 2000);
+            }
+            
+            
+          })
+          
         
-        setTimeout(() => {
-          this.setState({
-            isLoading:!this.state.isLoading
-          })
-        }, 2000);
+        
+
       }
      
       
