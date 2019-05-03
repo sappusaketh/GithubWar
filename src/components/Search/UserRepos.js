@@ -1,24 +1,10 @@
 import React from 'react';
-// import {Card, CardBody} from 'reactstrap'
 
 export default function UserRepos(props){
     let repos=props.repos;
-    
-    // function repoCard(repo){
-    //    return ( 
-    //    <Card>
-    //         <h4>{repo.name}</h4>
-    //         <p>Forks: {repo.forks}</p>
-    //         <p>Watch: {repo.watchers}</p>
-    //         <p>Open Issues: {repos.open_issues}</p>
-    //         <p>Main Language: {repos.language}</p>
-    //         <p>Created On: {repos.created_at}</p>
-    //     </Card>
-    //     )
-    // }
+  
     if(repos.length!==0){
     
-        // console.log(repos[1].language)
         return(
             <div className="row repo">
                 <h4 style={{ width: '100%', textAlign: 'center' }}>User Repositories</h4>
@@ -27,10 +13,7 @@ export default function UserRepos(props){
                 
             let created=new Date(repo.created_at)
             created=created.toLocaleDateString('en-US',{year:'numeric',month:'long'})
-                // console.log(repo)
                 return(
-                    
-                   
                     <li className="card" key={repo.id} >
                     
                         <a href={repo.html_url} target="_blank" rel="noopener noreferrer" ><h4 className="textsize">{repo.name}</h4></a>
