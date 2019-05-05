@@ -3,6 +3,20 @@ import Loading from '../Common/Loading';
 import { getUser, githubWar } from '../api/DataModel';
 import Results from './results';
 import PlayerInput from './PlayerInput';
+import Confetti from 'react-dom-confetti';
+
+const config = {
+  angle: 90,
+  spread: 45,
+  startVelocity: 45,
+  elementCount: 50,
+  dragFriction: 0.1,
+  duration: 3000,
+  delay: 0,
+  width: '10px',
+  height: '10px',
+  colors: ['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a']
+};
 
 const initial_state = {
   player1Name: '',
@@ -11,7 +25,8 @@ const initial_state = {
   player2Info: '',
   winner: '',
   looser: '',
-  isLoading: false
+  isLoading: false,
+  startConfetti: true
 };
 export default class Battle extends React.Component {
   constructor(props) {
@@ -72,6 +87,16 @@ export default class Battle extends React.Component {
           looser: data[1]
         });
       });
+
+      this.setState({
+        startConfetti: !this.state.startConfetti
+      });
+
+      setTimeout(() => {
+        this.setState({
+          startConfetti: !this.state.startConfetti
+        });
+      }, 2000);
     }
   }
 
@@ -147,7 +172,12 @@ export default class Battle extends React.Component {
       return (
         <div className=' container'>
           <div className='row'>
-            <div className='col-md-5'>{player1}</div>
+            <div className='col-md-5'>
+              {player1}
+              <div className='confetti'>
+                <Confetti active={this.state.startConfetti} config={config} />
+              </div>
+            </div>
             <div className=' battlebtn col-md-2'>
               {this.state.player1Info && this.state.player2Info ? ( //if player1 and player2 are submitted
                 winner && looser ? ( // if battle started

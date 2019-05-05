@@ -16,9 +16,9 @@ export default class HomeComponnet extends React.Component {
   render() {
     return (
       <div className='  container'>
-        <h1 className='customMargin'> this is home page</h1>
-        <Link className=' btn btn-primary' to='/battle'>
-          Battle
+        <h3 className='customMargin'>Welcome to GitHub Analyzer</h3>
+        <Link className=' btn btn-primary' to='/popular'>
+          Get Started
         </Link>
       </div>
     );

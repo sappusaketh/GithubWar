@@ -14,19 +14,8 @@ export default class Popular extends React.Component {
     this.handleLangaugeChange = this.handleLangaugeChange.bind(this);
     this.getRepos = this.getRepos.bind(this);
   }
-  //   componentDidMount() {
-  //   // console.log(window.effect);
-  //   this.effect = window.VANTA.WAVES({
-  //     el: '#app'
-  //   });
-  // }
-  //   componentWillUnmount() {
-  //     if (this.effect) this.effect.destroy();
-  //   }
+
   componentDidMount() {
-    // this.effect = window.VANTA.WAVES({
-    //   el: '#hello'
-    // });
     this.getRepos(this.state.lang);
   }
   handleLangaugeChange(lang) {

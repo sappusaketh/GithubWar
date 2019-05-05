@@ -9,6 +9,8 @@
     "bootstrap": "^4.3.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-dom-confetti": "^0.1.0",
+    "react-reveal": "^1.2.2",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
@@ -19,7 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "deploy":"aws s3 sync build/ s3://githubwaropensource",
+    "deploy": "aws s3 sync build/ s3://githubwaropensource",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

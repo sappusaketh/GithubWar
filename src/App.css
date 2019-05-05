@@ -16,41 +16,7 @@ body {
   -moz-animation: Gradient 15s ease infinite;
   animation: Gradient 15s ease infinite; */
 }
-/* @-webkit-keyframes Gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
-@-moz-keyframes Gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes Gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -58,7 +24,7 @@ body {
   to {
     transform: rotate(360deg);
   }
-} */
+}
 
 .searchinput {
   width: 35% !important ;
@@ -227,4 +193,113 @@ nav {
 }
 .customMargin {
   margin-top: 13%;
+}
+
+.wrapper {
+  max-width: 350px;
+  border-radius: 0.25rem;
+  color: #111;
+  margin: auto;
+  position: relative;
+  padding: 3px;
+}
+.winnerRainbow {
+  animation: Sidebar_rainbowBorder-2QRx- 0.5s linear infinite;
+  -webkit-animation: Sidebar_rainbowBorder-2QRx- 0.5s linear infinite;
+
+  background: -webkit-linear-gradient(
+    115deg,
+    #4fcf70,
+    #fad648,
+    #a767e5,
+    #12bcfe,
+    #44ce7b
+  );
+}
+.wrapper .card {
+  background: #f8e8cf !important;
+}
+.confetti {
+  display: flex;
+  justify-content: center;
+  height: inherit;
+}
+@-webkit-keyframes Sidebar_rainbowBorder-2QRx- {
+  0%,
+  to {
+    background-image: linear-gradient(
+      115deg,
+      #4fcf70,
+      #fad648,
+      #a767e5,
+      #12bcfe
+    );
+  }
+  25% {
+    background-image: linear-gradient(
+      115deg,
+      #fad648,
+      #a767e5,
+      #12bcfe,
+      #4fcf70
+    );
+  }
+  50% {
+    background-image: linear-gradient(
+      115deg,
+      #a767e5,
+      #12bcfe,
+      #4fcf70,
+      #fad648
+    );
+  }
+  75% {
+    background-image: linear-gradient(
+      115deg,
+      #12bcfe,
+      #4fcf70,
+      #fad648,
+      #a767e5
+    );
+  }
+}
+
+@keyframes Sidebar_rainbowBorder-2QRx- {
+  0%,
+  to {
+    background-image: linear-gradient(
+      115deg,
+      #4fcf70,
+      #fad648,
+      #a767e5,
+      #12bcfe
+    );
+  }
+  25% {
+    background-image: linear-gradient(
+      115deg,
+      #fad648,
+      #a767e5,
+      #12bcfe,
+      #4fcf70
+    );
+  }
+  50% {
+    background-image: linear-gradient(
+      115deg,
+      #a767e5,
+      #12bcfe,
+      #4fcf70,
+      #fad648
+    );
+  }
+  75% {
+    background-image: linear-gradient(
+      115deg,
+      #12bcfe,
+      #4fcf70,
+      #fad648,
+      #a767e5
+    );
+  }
 }
