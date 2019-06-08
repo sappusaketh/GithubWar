@@ -222,7 +222,7 @@ nav {
 .confetti {
   display: flex;
   justify-content: center;
-  height: inherit;
+  height: fixed !important;
 }
 @-webkit-keyframes Sidebar_rainbowBorder-2QRx- {
   0%,
