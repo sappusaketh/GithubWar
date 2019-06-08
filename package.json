@@ -5,17 +5,17 @@
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@nivo/pie": "^0.56.2",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "bootstrap": "^4.3.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-dom-confetti": "^0.1.0",
+    "react-dom-confetti": "^0.1.1",
     "react-reveal": "^1.2.2",
-    "react-router": "^5.0.0",
-    "react-router-dom": "^5.0.0",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "2.1.8",
     "reactstrap": "^8.0.0",
-    "victory": "^32.2.0"
+    "victory": "^32.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
