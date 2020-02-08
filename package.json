@@ -21,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "deploy": "aws s3 sync build/ s3://githubwaropensource",
+    "deploy": "aws s3 sync build/ s3://githubwar1 --profile Acc2",
+    "build-deploy": "yarn build && yarn deploy",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
