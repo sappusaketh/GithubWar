@@ -1,8 +1,6 @@
 import Axios from 'axios';
 
-const id = '4f222f0a729e56486a58';
-const sec = 'bcf861b19997f600bfe6c35342a4f40fa716c2d9';
-const params = `?client_id=${id}&client_secret=${sec}`;
+const params = `?`;
 const latest = 'order=asc&sort=updated';
 
 export function getUser(userName) {
